@@ -15,8 +15,10 @@ from django.views.generic import TemplateView
 class PaypalReturnView(TemplateView):
     template_name = 'users/paypal_success.html'
 
+
 class PaypalCancelView(TemplateView):
     template_name = 'users/paypal_cancel.html'
+
 
 class PaypalFormView(FormView):
     template_name = 'users/paypal_form.html'
@@ -36,6 +38,7 @@ class PaypalFormView(FormView):
             "no_shipping": '1',
         }
 
+
 class Order(View):
     def get(self, request, *args, **kwargs):
         appetizers = StarterMenu.objects.filter(starterOption='Starter')
@@ -47,17 +50,18 @@ class Order(View):
             'entres': entres,
             'desserts': desserts,
             'drinks': drinks,
-            'heros' : Hero.objects.all(),
+            'heros': Hero.objects.all(),
             'links': Link.objects.all().first(),
             'footer': Footer.objects.all().first(),
         }
         return render(request, 'users/order.html', context)
+
     def post(self, request, *args, **kwargs):
-        name =  request.POST['name']
-        email =  request.POST['email']
-        location =  request.POST['location']
-        phone_number =  request.POST['phone_number']
-        if(name and email and location and phone_number):
+        name = request.POST['name']
+        email = request.POST['email']
+        location = request.POST['location']
+        phone_number = request.POST['phone_number']
+        if (name and email and location and phone_number):
             app_order_items = {
                 'items': []
             }
@@ -119,7 +123,7 @@ class Order(View):
                 }
                 data.append(f'Order: {item_data["amount"]} X {item_data["name"]}')
                 drinks_order_items['items'].append(item_data)
-            
+
             price = 0
             app_item_ids = []
             main_item_ids = []
@@ -141,7 +145,7 @@ class Order(View):
                 price += (float((item['price'])[:-1]) * int(item['amount']))
                 for i in range(int(item['amount'])):
                     app_item_ids.append(item['id'])
-            
+
             order = OrderModel.objects.create(price=price)
             order.starterItems.add(*app_item_ids)
             order.mainItems.add(*main_item_ids)
@@ -151,9 +155,8 @@ class Order(View):
             order.email = (email)
             order.location = (location)
             order.phone = (phone_number)
-          
-            
-            if(price == 0):
+
+            if (price == 0):
                 appetizers = StarterMenu.objects.filter(starterOption='Starter')
                 entres = MainMenu.objects.filter(mainOption='Main')
                 desserts = DessertMenu.objects.filter(dessertOption='Dessert')
@@ -163,57 +166,59 @@ class Order(View):
                     'entres': entres,
                     'desserts': desserts,
                     'drinks': drinks,
-                    'heros' : Hero.objects.all(),
+                    'heros': Hero.objects.all(),
                     'links': Link.objects.all().first(),
                     'footer': Footer.objects.all().first(),
                 }
                 messages.warning(request, 'Please choose an item')
                 return render(request, 'users/order.html', context)
             else:
-                
-                order.save()  
+
+                order.save()
 
                 context = {
-                'app_items': app_order_items['items'],
-                'main_items': main_order_items['items'],
-                'dessert_items': dessert_order_items['items'],
-                'drink_items': drinks_order_items['items'],
-                'price': price,
-                'heros' : Hero.objects.all(),
-                'links': Link.objects.all().first(),
-                'footer': Footer.objects.all().first(),
-                    
+                    'app_items': app_order_items['items'],
+                    'main_items': main_order_items['items'],
+                    'dessert_items': dessert_order_items['items'],
+                    'drink_items': drinks_order_items['items'],
+                    'price': price,
+                    'heros': Hero.objects.all(),
+                    'links': Link.objects.all().first(),
+                    'footer': Footer.objects.all().first(),
+
                 }
-                delivery = "Order date: " + str(date.today()) + "\nName: " + order.name + "\nPhone: " + order.phone + "\nMail: " + order.email + "\nLocation: " + order.location + "\nContent: " + str(data) + '\nTotal Price: '+ str(order.price) + "€"
+                delivery = "Order date: " + str(
+                    date.today()) + "\nName: " + order.name + "\nPhone: " + order.phone + "\nMail: " + order.email + "\nLocation: " + order.location + "\nContent: " + str(
+                    data) + '\nTotal Price: ' + str(order.price) + "€"
                 send_mail(
-                'Delivery Order Request',
-                delivery,
-                email,
-                ['el.delicious.d.etiopia@gmail.com'],
+                    'Delivery Order Request',
+                    delivery,
+                    email,
+                    ['el.delicious.d.etiopia@gmail.com'],
                 )
                 return render(request, 'users/order_confirmation.html', context)
         else:
-            
-                appetizers = StarterMenu.objects.filter(starterOption='Starter')
-                entres = MainMenu.objects.filter(mainOption='Main')
-                desserts = DessertMenu.objects.filter(dessertOption='Dessert')
-                drinks = DrinksMenu.objects.filter(drinksOption='Drink')
-                context = {
-                    'appetizers': appetizers,
-                    'entres': entres,
-                    'desserts': desserts,
-                    'drinks': drinks,
-                    'heros' : Hero.objects.all(),
-                    'links': Link.objects.all().first(),
-                    'footer': Footer.objects.all().first(),
-                }
-                messages.warning(request, 'Please fill details')
-                return render(request, 'users/order.html', context)
-            
+
+            appetizers = StarterMenu.objects.filter(starterOption='Starter')
+            entres = MainMenu.objects.filter(mainOption='Main')
+            desserts = DessertMenu.objects.filter(dessertOption='Dessert')
+            drinks = DrinksMenu.objects.filter(drinksOption='Drink')
+            context = {
+                'appetizers': appetizers,
+                'entres': entres,
+                'desserts': desserts,
+                'drinks': drinks,
+                'heros': Hero.objects.all(),
+                'links': Link.objects.all().first(),
+                'footer': Footer.objects.all().first(),
+            }
+            messages.warning(request, 'Please fill details')
+            return render(request, 'users/order.html', context)
+
 
 def home(request):
     context1 = {
-        'heros' : Hero.objects.all(),
+        'heros': Hero.objects.all(),
         'aboutUs': About.objects.all(),
         'whyUs': WhyUs.objects.all(),
         'footer': Footer.objects.all().first(),
@@ -228,60 +233,56 @@ def home(request):
         'testimonials': Testimonial.objects.all(),
         'events': Event.objects.all(),
         'specials': Special.objects.all(),
-        'chefs':Chef.objects.all(),
+        'chefs': Chef.objects.all(),
         'specials': Special.objects.all(),
         'links': Link.objects.all().first(),
-        'reservations':Reservation.objects.all()
+        'reservations': Reservation.objects.all()
 
-    }    
-    
-    return render(request, 'restaurant/home.html',context1)
+    }
+
+    return render(request, 'restaurant/home.html', context1)
+
 
 def verify(request):
     return render(request, 'restaurant/google9f1fe2c472c358f0.html')
 
+
 def site(request):
     return HttpResponse(open('restaurant/sitemap.xml').read(), content_type='text/xml')
 
+
 def reservation(request):
-    
-   
     if request.method == "POST":
         your_name = request.POST['name']
         your_phone = request.POST['phone']
         your_email = request.POST['email']
         date = request.POST['date']
-        
+
         number_of_people = request.POST['people']
         message = request.POST['message']
-        
-        reservation = "Name:" + your_name + " \n Phone:" + your_phone + "\n Email:" + your_email + "\n Date:" + date +  " \n Number of People:" + number_of_people + "\n Message:" + message
+
+        reservation = "Name:" + your_name + " \n Phone:" + your_phone + "\n Email:" + your_email + "\n Date:" + date + " \n Number of People:" + number_of_people + "\n Message:" + message
         send_mail(
             'Table Reservation Request',
             reservation,
             your_email,
             ['el.delicious.d.etiopia@gmail.com'],
         )
-        
 
         return render(request, 'restaurant/reservation.html', {
-        'your_name':your_name,
-        'your_phone':your_phone,
-        'your_email':your_email,
-        'date':date,
-       
-        'number_of_people':number_of_people,
-        'message':message})
+            'your_name': your_name,
+            'your_phone': your_phone,
+            'your_email': your_email,
+            'date': date,
+
+            'number_of_people': number_of_people,
+            'message': message})
     else:
-        return render(request, 'restaurant/home.html',{
-        'your_name':your_name,
-        'your_phone':your_phone,
-        'your_email':your_email,
-        'date':date,
-       
-        'number_of_people':number_of_people,
-        'message':message})
+        return render(request, 'restaurant/home.html', {
+            'your_name': your_name,
+            'your_phone': your_phone,
+            'your_email': your_email,
+            'date': date,
 
-    
-
-  
+            'number_of_people': number_of_people,
+            'message': message})

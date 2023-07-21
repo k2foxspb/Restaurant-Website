@@ -2,597 +2,624 @@
 {% load static %}
 
 {% block hero %}
-  <section id="hero">
-    <div class="hero-container">
-      <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <section id="hero">
+        <div class="hero-container">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-        <div class="carousel-inner" role="listbox">
+                <div class="carousel-inner" role="listbox">
 
-          <!-- Slide 1 -->
-          {% for hero in heros %}
-          <div class="carousel-item active" id="sliderImage" >
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown"><span>{{hero.restaurantName}}</span> Restaurant</h2>
-                <p class="animate__animated animate__fadeInUp">{{hero.restaurantMotto}}</p>
-                <div>
-                    <a href="{% url 'order'%}" class="btn-book animate__animated animate__fadeInUp scrollto">Entrega de pedidos</a>
-                    <a href="#book-a-table" class="btn-book animate__animated animate__fadeInUp scrollto">Reservar una mesa</a>
+                    <!-- Slide 1 -->
+                    {% for hero in heros %}
+                        <div id="sliderImage" style="background-image: url('{{ hero.image.url }}')"
+                             class="carousel-item active">
+                            <div class="carousel-container">
+                                <div class="carousel-content">
+                                    <h2 class="animate__animated animate__fadeInDown">
+                                        <span>{{ hero.restaurantName }}</span>
+                                    </h2>
+                                    <p class="animate__animated animate__fadeInUp">{{ hero.restaurantMotto }}</p>
+                                    <div>
+                                        {#                    <a href="{% url 'order'%}" class="btn-book animate__animated animate__fadeInUp scrollto">доставка заказа</a>#}
+                                        <a href="#menu"
+                                           class="btn-book animate__animated animate__fadeInUp scrollto">Меню</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
                 </div>
-              </div>
+
             </div>
-          </div>
-          {% endfor %}
-
-        
-
-         
         </div>
-
-      </div>
-    </div>
-  </section>
+    </section>
 {% endblock hero %}
 
-{% block about %}
-    <section id="about" class="about">
-      <div class="container-fluid">
-
-        <div class="row">
-
-          <div class="col-lg-5 ml-4" id='aboutPic'>
-            
-          </div>
-          {% for about in aboutUs%}
-          <div class="col-lg-5 d-flex flex-column lh-2 justify-content-center align-items-stretch">
-
-            <div class="content">
-              <h3> <strong>{{about.aboutTitle}}</strong></h3>
-              <p>
-                {{about.aboutPar1}}
-               
-              </p>
-              <p class="font-italic">
-                {{about.aboutPar2}}
-               
-              </p>
-              
-              <p>
-                {{about.aboutPar3}}
-               
-              </p>
-            </div>
-
-          </div>
-
-          {% endfor %}
-
-        </div>
-
-      </div>
-    </section>
-{% endblock about %}
+{#{% block about %}#}
+{#    <section id="about" class="about">#}
+{#        <div class="container-fluid">#}
+{##}
+{#            <div class="row">#}
+{##}
+{#                <div class="col-lg-5 ml-4" id='aboutPic'>#}
+{##}
+{#                </div>#}
+{#                {% for about in aboutUs %}#}
+{#                    <div class="col-lg-5 d-flex flex-column lh-2 justify-content-center align-items-stretch">#}
+{##}
+{#                        <div class="content">#}
+{#                            <h3><strong>{{ about.aboutTitle }}</strong></h3>#}
+{#                            <p>#}
+{#                                {{ about.aboutPar1 }}#}
+{##}
+{#                            </p>#}
+{#                            <p class="font-italic">#}
+{#                                {{ about.aboutPar2 }}#}
+{##}
+{#                            </p>#}
+{##}
+{#                            <p>#}
+{#                                {{ about.aboutPar3 }}#}
+{##}
+{#                            </p>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{##}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </section>#}
+{#{% endblock about %}#}
 
 {% block why-us %}
     <section id="why-us" class="why-us">
-      {% for us in whyUs %}
-      <div class="container">
+        {% for us in whyUs %}
+            <div class="container">
 
-        <div class="section-title">
-          <h2>{{us.whyUsTitle}}</h2>
-          
-        </div>
+                <div class="section-title">
+                    <h2>{{ us.whyUsTitle }}</h2>
 
-        <div class="row">
+                </div>
 
-          <div class="col-lg-4">
-            <div class="box">
-              <span>01</span>
-              <h4>{{us.whyUs1}}</h4>
-              <p>{{us.whyUsDesc1}}</p>
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="box">
+                            <span>01</span>
+                            <h4>{{ us.whyUs1 }}</h4>
+                            <p>{{ us.whyUsDesc1 }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="box">
+                            <span>02</span>
+                            <h4>{{ us.whyUs2 }}</h4>
+                            <p>{{ us.whyUsDesc2 }}</p>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="box">
+                            <span>03</span>
+                            <h4>{{ us.whyUs3 }}</h4>
+                            <p>{{ us.whyUsDesc3 }}</p>
+                            <p></p>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="box">
-              <span>02</span>
-              <h4>{{us.whyUs2}}</h4>
-              <p>{{us.whyUsDesc2}}</p>
-              <p></p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="box">
-              <span>03</span>
-              <h4>{{us.whyUs3}}</h4>
-              <p>{{us.whyUsDesc3}}</p>
-              <p></p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-      {% endfor %}
+        {% endfor %}
     </section>
 {% endblock why-us %}
 
-{% block menu %} 
+{% block menu %}
 
     <section id="menu" class="menu">
-      <div class="container">
+        <div class="container">
 
-        <div class="section-title">
-          <h2><span>Menú</span></h2>
+            <div class="section-title">
+                <h2><span>Меню</span></h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="menu-flters">
+                        <li data-filter="*" class="filter-active">Показать все</li>
+                        <li data-filter=".filter-starters">закуска</li>
+                        <li data-filter=".filter-main">Основные блюда</li>
+                        <li data-filter=".filter-desserts">Десерты</li>
+                        <li data-filter=".filter-drinks">Напитки</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row menu-container">
+                {% for starter in starterMenu %}
+                    <div class="col-lg-6 menu-item filter-starters">
+                        <div class="col-md-2 text-center" id="menuSize">
+                            <img src="{% static "restaurant/images/starters/" %}{{ starter.id }}.jpg" alt=""
+                                 class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="menu-content">
+                                <a href="#">{{ starter.starterContent }}</a><span>{{ starter.starterPrice }}</span>
+                            </div>
+                            <div class="menu-ingredients">
+                                {{ starter.starterDesc }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+
+                {% for main in mainMenu %}
+                    <div class="col-lg-6 menu-item filter-main">
+                        `
+                        <div class="col-md-2 text-center" id="menuSize">
+                            <img src="{% static "restaurant/images/mains/" %}{{ main.id }}.jpg" alt=""
+                                 class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="menu-content">
+                                <a href="#">{{ main.mainContent }}</a><span>{{ main.mainPrice }}</span>
+                            </div>
+                            <div class="menu-ingredients">
+                                {{ main.mainDesc }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for dessert in dessertMenu %}
+                    <div class="col-lg-6 menu-item filter-desserts">
+                        <div class="col-md-2 text-center" id="menuSize">
+                            <img src="{% static "restaurant/images/desserts/" %}{{ dessert.id }}.jpg" alt=""
+                                 class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="menu-content">
+                                <a href="#">{{ dessert.dessertContent }}</a><span>{{ dessert.dessertPrice }}</span>
+                            </div>
+                            <div class="menu-ingredients">
+                                {{ dessert.dessertDesc }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for drinks in drinksMenu %}
+                    <div class="col-lg-6 menu-item filter-drinks">
+                        <div class="col-md-2 text-center" id="menuSize">
+                            <img src="{% static "restaurant/images/drinks/" %}{{ drinks.id }}.jpg" alt=""
+                                 class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="menu-content">
+                                <a href="#">{{ drinks.drinksContent }}</a><span>{{ drinks.drinksPrice }}</span>
+                            </div>
+                            <div class="menu-ingredients">
+                                {{ drinks.drinksDesc }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
         </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="menu-flters">
-              <li data-filter="*" class="filter-active">Mostrar todo</li>
-              <li data-filter=".filter-starters">Entrantes</li>
-              <li data-filter=".filter-main">Platos principales</li>
-              <li data-filter=".filter-desserts">Postres</li>
-              <li data-filter=".filter-drinks">Bebidas</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row menu-container">
-          {% for starter in starterMenu %}
-          <div class="col-lg-6 menu-item filter-starters">
-            <div class="col-md-2 text-center" id="menuSize">
-              <img src="{% static "restaurant/images/starters/" %}{{ starter.id }}.jpg" alt="" class="img-fluid">
-            </div>
-            <div class="col-md-8">
-              <div class="menu-content">
-                <a href="#">{{starter.starterContent}}</a><span>{{starter.starterPrice}}</span>
-              </div>
-              <div class="menu-ingredients">
-                {{starter.starterDesc}}
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-
-
-          {% for main in mainMenu %}
-          <div class="col-lg-6 menu-item filter-main">
-          `<div class="col-md-2 text-center" id="menuSize">
-              <img src="{% static "restaurant/images/mains/" %}{{ main.id }}.jpg" alt="" class="img-fluid">
-            </div>
-            <div class="col-md-8">
-              <div class="menu-content">
-                <a href="#">{{main.mainContent}}</a><span>{{main.mainPrice}}</span>
-              </div>
-              <div class="menu-ingredients">
-                {{main.mainDesc}}
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-          {% for dessert in dessertMenu %}
-          <div class="col-lg-6 menu-item filter-desserts">
-            <div class="col-md-2 text-center" id="menuSize">
-              <img src="{% static "restaurant/images/desserts/" %}{{ dessert.id }}.jpg" alt="" class="img-fluid">
-            </div>
-            <div class="col-md-8">
-              <div class="menu-content">
-                <a href="#">{{dessert.dessertContent}}</a><span>{{dessert.dessertPrice}}</span>
-              </div>
-              <div class="menu-ingredients">
-                {{dessert.dessertDesc}}
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-          {% for drinks in drinksMenu %}
-          <div class="col-lg-6 menu-item filter-drinks">
-            <div class="col-md-2 text-center" id="menuSize">
-              <img src="{% static "restaurant/images/drinks/" %}{{ drinks.id }}.jpg" alt="" class="img-fluid">
-            </div>
-            <div class="col-md-8">
-              <div class="menu-content">
-                <a href="#">{{drinks.drinksContent}}</a><span>{{drinks.drinksPrice}}</span>
-              </div>
-              <div class="menu-ingredients">
-                {{drinks.drinksDesc}}
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-          
-
-        </div>
-
-      </div>
     </section>
-{% endblock menu%}
+{% endblock menu %}
 
 {% block specials %}
 
     <section id="specials" class="specials">
-      <div class="container">
+        <div class="container">
 
-        <div class="section-title">
-          <h2>Consulte nuestras ofertas  <span>especiales</span></h2>
-         
-        </div>
-        
-        <div class="row">
-          <div class="col-lg-3">
-            <ul class="nav nav-tabs flex-column">
-            {% for special in specials %}
-              {% if special.id == 2 %}
-              <li class="nav-item">
-                <a class="nav-link active show" data-toggle="tab" href="#tab-{{special.id}}">{{special.specialName}}</a>
-              </li>
+{#            <div class="section-title">#}
+{#                <h2>Consulte nuestras ofertas <span>especiales</span></h2>#}
+{##}
+{#            </div>#}
 
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-{{special.id}}">{{special.specialName}}</a>
-              </li>
-              {% endif %}
-              {% endfor %}
-            
-              
-            </ul>
-          </div>
-          <div class="col-lg-9 mt-4 mt-lg-0">
-            <div class="tab-content">
-            {% for special in specials %}
-              {% if special.id == 2 %}
-              <div class="tab-pane active" id="tab-{{special.id}}">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>{{special.specialName}}</h3>
-                    <p class="font-italic">{{special.specialDescription}}</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2" id="specialSize">
-                    <img src="{% static 'restaurant/images/kitfo.jpg' %}" alt="" class="img-fluid">
-                    {% comment %} <img src="{{special.specialImage.url}}" alt="" class="img-fluid"> {% endcomment %}
-                  </div>
-                </div>
-              </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <ul class="nav nav-tabs flex-column">
+                        {% for special in specials %}
+                            {% if special.id == 2 %}
+                                <li class="nav-item">
+                                    <a class="nav-link active show" data-toggle="tab"
+                                       href="#tab-{{ special.id }}">{{ special.specialName }}</a>
+                                </li>
 
-              {% else %}
-              <div class="tab-pane" id="tab-{{special.id}}">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>{{special.specialName}}</h3>
-                    <p class="font-italic">{{special.specialDescription}}</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2" id="specialSize">
-                    <img src="{% static 'restaurant/images/tibs.jpg' %}" alt="" class="img-fluid">
-                    {% comment %} <img src="{{special.specialImage.url}}" alt="" class="img-fluid"> {% endcomment %}
-                  </div>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab"
+                                       href="#tab-{{ special.id }}">{{ special.specialName }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </ul>
                 </div>
-              </div>
-              {% endif %}
-              {% endfor %}
-             
-              
-              
+                <div class="col-lg-9 mt-4 mt-lg-0">
+                    <div class="tab-content">
+                        {% for special in specials %}
+                            {% if special.id == 2 %}
+                                <div class="tab-pane active" id="tab-{{ special.id }}">
+                                    <div class="row">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>{{ special.specialName }}</h3>
+                                            <p class="font-italic">{{ special.specialDescription }}</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2" id="specialSize">
+                                            <img src="{% static 'restaurant/images/kitfo.jpg' %}" alt=""
+                                                 class="img-fluid">
+                                            {% comment %}<img src="{{ special.specialImage.url }}" alt=""
+                                                              class="img-fluid"> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% else %}
+                                <div class="tab-pane" id="tab-{{ special.id }}">
+                                    <div class="row">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>{{ special.specialName }}</h3>
+                                            <p class="font-italic">{{ special.specialDescription }}</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2" id="specialSize">
+                                            <img src="{% static 'restaurant/images/tibs.jpg' %}" alt=""
+                                                 class="img-fluid">
+                                            {% comment %}<img src="{{ special.specialImage.url }}" alt=""
+                                                              class="img-fluid"> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
         </div>
 
-      </div>
+        </div>
     </section>
 {% endblock specials %}
 
-{% block events %} 
-    <section id="events" class="events">
-      <div class="container">
+{#{% block events %}#}
+{#    <section id="events" class="events">#}
+{#        <div class="container">#}
+{##}
+{#            <div class="section-title">#}
+{#                <h2>Почувствуй <span>нашу</span>атомсферу</h2>#}
+{#            </div>#}
+{##}
+{#            <div class="owl-carousel events-carousel">#}
+{##}
+{#                {% for event in events %}#}
+{#                    <div class="row event-item">#}
+{#                        <div class="col-lg-6">#}
+{#                            {% comment %}#}
+{#                                <img src="{{ event.eventImage.url }}" class="img-fluid" alt=""> {% endcomment %}#}
+{#                            <img src="{% static 'restaurant/images/customer1.jpg' %}" class="img-fluid" alt="">#}
+{##}
+{#                        </div>#}
+{#                        <div class="col-lg-6 pt-4 pt-lg-0 content">#}
+{#                            <h3>{{ event.event_title }}</h3>#}
+{#                            <div class="price">#}
+{#                                <p><span>{{ event.price }}</span></p>#}
+{#                            </div>#}
+{#                            <p class="font-italic">#}
+{#                                {{ event.description }}#}
+{#                            </p>#}
+{#                            <ul>#}
+{#                                <li><i class="icofont-check-circled"></i> {{ event.content_1 }}</li>#}
+{#                                <li><i class="icofont-check-circled"></i> {{ event.content_2 }}</li>#}
+{#                                <li><i class="icofont-check-circled"></i> {{ event.content_3 }}</li>#}
+{#                            </ul>#}
+{#                            <p>#}
+{#                                {{ event.content }}#}
+{#                            </p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </section>#}
+{#{% endblock events %}#}
 
-        <div class="section-title">
-          <h2>Organice sus <span>eventos</span> en nuestro restaurantet</h2>
+{% block book-a-table %}
+    <section id="book-a-table" class="book-a-table">
+        <div class="container">
+
+{#            <div class="section-title">#}
+{#                <h2><span>Reservar </span> una mesa</h2>#}
+{##}
+{#            </div>#}
+
+{#            <form action="{% url 'reservation' %}" method="POST" class="php-email-form" id="myForm">#}
+{#                {% csrf_token %}#}
+{#                <div class="form-row">#}
+{#                    <div class="col-lg-4 col-md-6 form-group">#}
+{#                        <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombrex"#}
+{#                               data-rule="minlen:4" data-msg="Please enter your full name" required>#}
+{#                        <div class="validate"></div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6 form-group">#}
+{#                        <input type="email" class="form-control" name="email" id="email"#}
+{#                               placeholder="Tu correo electrónico" data-rule="email"#}
+{#                               data-msg="Please enter a valid email" required>#}
+{#                        <div class="validate"></div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6 form-group">#}
+{#                        <input type="text" class="form-control" name="phone" id="phone"#}
+{#                               placeholder="Tu número de teléfono" data-rule="minlen:4"#}
+{#                               data-msg="Please enter your phone number" required>#}
+{#                        <div class="validate"></div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6 form-group">#}
+{##}
+{#                        <input type="datetime-local" name="date" class="form-control" id="date" placeholder="Fecha"#}
+{#                               data-rule="minlen:4" data-msg="Please enter the date" required>#}
+{##}
+{##}
+{#                    </div>#}
+{#                    <div class="validate"></div>#}
+{##}
+{##}
+{#                    <div class="col-lg-4 col-md-6 form-group">#}
+{#                        <input type="number" min="1" class="form-control" name="people" id="people"#}
+{#                               placeholder="Número de personas" data-rule="minlen:1"#}
+{#                               data-msg="Please enter the number of people" required>#}
+{#                        <div class="validate"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <textarea class="form-control" name="message" rows="5" placeholder="Mensaje"></textarea>#}
+{#                    <div class="validate"></div>#}
+{#                </div>#}
+{##}
+{#                <div class="text-center">#}
+{#                    <button type="submit" id="submit" data-toggle="modal" data-target="#myModal">Reservar una mesa#}
+{#                    </button>#}
+{#                </div>#}
+{#                <div class="modal fade" id="myModal" role="dialog">#}
+{#                    <div class="modal-dialog">#}
+{##}
+{#                        <!-- Modal content-->#}
+{#                        <div class="modal-content">#}
+{#                            <div class="modal-header">#}
+{#                                <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#                                <h2 class="modal-title">Reservation Sent Successfully!</h2>#}
+{#                            </div>#}
+{#                            <div class="modal-body">#}
+{#                                <p>Confirmaremos su reserva en breve por correo electrónico o una llamada#}
+{#                                    telefónica!</p>#}
+{#                            </div>#}
+{#                            <div class="modal-footer">#}
+{#                                <button type="button" class="btn btn-default"#}
+{#                                        onclick="javascript:window.location.reload()" data-dismiss="modal">Close#}
+{#                                </button>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </form>#}
+
         </div>
-
-        <div class="owl-carousel events-carousel">
-
-          {% for event in events%}
-            <div class="row event-item">
-              <div class="col-lg-6">
-                {% comment %} <img src="{{event.eventImage.url}}" class="img-fluid" alt=""> {% endcomment %}
-                <img src="{% static 'restaurant/images/customer1.jpg' %}" class="img-fluid" alt="">
-                
-              </div>
-              <div class="col-lg-6 pt-4 pt-lg-0 content">
-                <h3>{{event.event_title}}</h3>
-                <div class="price">
-                  <p><span>{{event.price}}</span></p>
-                </div>
-                <p class="font-italic">
-                  {{event.description}}
-                </p>
-                <ul>
-                  <li><i class="icofont-check-circled"></i> {{event.content_1}}</li>
-                  <li><i class="icofont-check-circled"></i> {{event.content_2}}</li>
-                  <li><i class="icofont-check-circled"></i> {{event.content_3}}</li>
-                </ul>
-                <p>
-                  {{event.content}}
-                </p>
-              </div>
-            </div>
-          {% endfor %}
-
-        </div>
-
-      </div>
-    </section>
-{% endblock events %}
-
-{% block book-a-table %} 
-    <section id="book-a-table" class="book-a-table" >
-      <div class="container">
-
-        <div class="section-title">
-          <h2><span>Reservar </span> una mesa</h2>
-         
-        </div>
-
-        <form action="{% url 'reservation' %}" method="POST"  class="php-email-form" id="myForm" >
-          {% csrf_token %}
-          <div class="form-row">
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombrex" data-rule="minlen:4" data-msg="Please enter your full name" required>
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo electrónico" data-rule="email" data-msg="Please enter a valid email" required>
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Tu número de teléfono" data-rule="minlen:4" data-msg="Please enter your phone number" required>
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              
-             <input type="datetime-local" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter the date" required>
-             
-
-         
-            </div>
-                <div class="validate"></div>
-            
-           
-           
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="number" min="1" class="form-control" name="people" id="people" placeholder="Número de personas" data-rule="minlen:1" data-msg="Please enter the number of people" required>
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" placeholder="Mensaje"></textarea>
-            <div class="validate"></div>
-          </div>
-        
-          <div class="text-center"><button type="submit"  id = "submit" data-toggle="modal" data-target="#myModal">Reservar una mesa</button></div>
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-            
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h2 class="modal-title">Reservation Sent Successfully!</h2>
-                </div>
-                <div class="modal-body">
-                  <p>Confirmaremos su reserva en breve por correo electrónico o una llamada telefónica!</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" onclick="javascript:window.location.reload()" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </form>
-
-      </div>
     </section>
 {% endblock book-a-table %}
 
-{% block gallery %} 
+{% block gallery %}
     <section id="gallery" class="gallery">
-      <div class="container-fluid">
+        <div class="container-fluid">
 
-        <div class="section-title">
-          <h2>Algunas fotos de <span>Nuestro Restaurante</span></h2>
-          
+            <div class="section-title">
+                <h2>Несколько фотографий <span>нашего ресторана</span></h2>
+
+            </div>
+
+            <div class="row no-gutters">
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{% static 'restaurant/images/customer4.jpg' %}" class="venobox"
+                           data-gall="gallery-item">
+                            <img src="{% static 'restaurant/images/customer4.jpg' %}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{% static 'restaurant/images/customer5.jpg' %}" class="venobox"
+                           data-gall="gallery-item">
+                            <img src="{% static 'restaurant/images/customer5.jpg' %}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{% static 'restaurant/images/customer2.jpg' %}" class="venobox"
+                           data-gall="gallery-item">
+                            <img src="{% static 'restaurant/images/customer2.jpg' %}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{% static 'restaurant/images/customer3.jpg' %}" class="venobox"
+                           data-gall="gallery-item">
+                            <img src="{% static 'restaurant/images/customer3.jpg' %}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'restaurant/images/customer4.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'restaurant/images/customer4.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'restaurant/images/customer5.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'restaurant/images/customer5.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'restaurant/images/customer2.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'restaurant/images/customer2.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{% static 'restaurant/images/customer3.jpg' %}" class="venobox" data-gall="gallery-item">
-                <img src="{% static 'restaurant/images/customer3.jpg' %}" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-         
-
-         
-        </div>
-
-      </div>
     </section>
 {% endblock gallery %}
 
-{% block chefs %} 
+{% block chefs %}
     <section id="chefs" class="chefs">
-      <div class="container">
+        <div class="container">
 
-        <div class="section-title">
-          <h2>Nuestros <span>Chefs</span> Profesionales </h2>
-          
-        </div>
+            <div class="section-title">
+                <h2>Наши <span>профессиональные</span> повара </h2>
 
-        <div class="row">
-          <div class="col-lg-4">
-          </div>
-          {% for chef in chefs %}
-          <div class="col-lg-4">
-            <div class="member">
-              <div class="pic" id="chefSize">
-                {% comment %} <img src="{{chef.chefImage.url}}" class="img-fluid" alt=""> {% endcomment %}
-                <img src="{% static 'restaurant/images/el.jpg' %}" class="img-fluid" alt="">
-              </div>
-              <div class="member-info">
-                <h4>{{chef.chefName}} </h4>
-                <span>{{chef.chefRole}}</span>
-                
-              </div>
             </div>
-          </div>
-          {% endfor %}
 
-         
+            <div class="row">
+                <div class="col-lg-4">
+                </div>
+                {% for chef in chefs %}
+                    <div class="col-lg-4">
+                        <div class="member">
+                            <div class="pic" id="chefSize">
+                                <img src="{{ chef.image.url }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>{{ chef.chefName }} </h4>
+                                <span>{{ chef.chefRole }}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
 
         </div>
-
-      </div>
     </section>
 {% endblock chefs %}
 
-{% block testimonials %} 
+{% block testimonials %}
     <section id="testimonials" class="testimonials">
-      <div class="container">
+        <div class="container">
 
-        <div class="owl-carousel testimonials-carousel">
+            <div class="owl-carousel testimonials-carousel">
 
-          {% for testimonial in testimonials%}
-            <div class="testimonial-item">
-              <h3>{{testimonial.testimonial_subject}}</h3>
-              
-              <div class="stars">
-                {% with ''|center:testimonial.rating.value as range %}
-                  {% for _ in range %}
-                      <i class="icofont-star"></i>
-                  {% endfor %}
-                {% endwith %}
-              </div>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                {{testimonial.content}}
-              </p>
+                {% for testimonial in testimonials %}
+                    <div class="testimonial-item">
+                        <h3>{{ testimonial.testimonial_subject }}</h3>
+
+                        <div class="stars">
+                            {% with ''|center:testimonial.rating.value as range %}
+                                {% for _ in range %}
+                                    <i class="icofont-star"></i>
+                                {% endfor %}
+                            {% endwith %}
+                        </div>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            {{ testimonial.content }}
+                        </p>
+                    </div>
+                {% endfor %}
+
             </div>
-          {% endfor %}    
 
         </div>
-
-      </div>
     </section>
 {% endblock testimonials %}
 
 {% block contact %}
     <section id="contact" class="contact">
-      <div class="container">
+        <div class="container">
 
-        <div class="section-title">
-          <h2><span>Contacta</span>  con nosotros</h2>
-          
+            <div class="section-title">
+                <h2><span>Приходите</span> попробовать</h2>
+
+            </div>
         </div>
-      </div>
 
-      <div class="map">
-        <iframe  id= "mapStyle" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.4652039697517!2d2.1607219154264072!3d41.40741917926227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a29833bb83ab%3A0xb2aa9a9bdf2dfa5d!2sEl%20Delici%C3%B3s%20d&#39;Etiopia!5e0!3m2!1sen!2set!4v1616530150139!5m2!1sen!2set" width="600" height="450"  allowfullscreen="" loading="lazy"></iframe>
-       
-      </div>
-
-      <div class="container mt-5">
-
-        <div class="info-wrap">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 info">
-              <i class="icofont-google-map"></i>
-              <h4>Localización:</h4>
-              {% for locationData in location %}
-                <p>{{locationData.avenue}}<br> {{locationData.city}},
-                {{locationData.country}}</p>
-                <br>
-              {% endfor %}
-            </div>
-
-            <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
-              <i class="icofont-clock-time icofont-rotate-90"></i>
-              <h4>Horarios de apertura:</h4>
-              <p>lunes &amp; martes:	<br> {{openHours.weekdays_startTime}} – {{openHours.weekdays_endTime}}<br><br>
-                miércoles: Cerrado<br><br>
-                 jueves &amp; viernes &amp; sábado &amp; domingo:	<br>{{openHours.weekends_startTime}} – {{openHours.weekends_endTime}}, {{openHours.weekdays_startTime}} – {{openHours.weekdays_endTime}}</p>
-            </div>
-
-            <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
-              <i class="icofont-envelope"></i>
-              <h4>Correo electrónico:</h4>
-              {% for emailData in email %}
-                <p>{{emailData.email_address}}</p>
-                <br>
-              {% endfor %}
-              
-            </div>
-
-            <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
-              <i class="icofont-phone"></i>
-              <h4>Teléfono:</h4>
-              {% for callData in call %}
-                <br>
-                <a href="tel:{{callData.phone_number}}">{{callData.phone_number}}</a>
-                <br>
-              {% endfor %}
-              
-            </div>
-          </div>
+        <div class="map">
+            <script type="text/javascript" charset="utf-8" async
+                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae230931a7cd2503bbfd016ad72f77655d831da4c6204ce36518cc733bb638e45&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
         </div>
-        <div class="row">
-          <div class="col-6 info mx-0 d-flex justify-content-end">
-          <a href="{{ links.whatsappLink }}" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
-                
-          </div>
-          <div class="col-6 info mx-0 d-flex justify-content-start">
-          <a href="{{ links.telegramLink }}" class="telegram"><i class="bx bxl-telegram"></i></a>
-            
-          </div>
-        
+
+        <div class="container mt-5">
+
+            <div class="info-wrap">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 info">
+                        <i class="icofont-google-map"></i>
+                        <h4>Расположение:</h4>
+                        {% for locationData in location %}
+                            <p>{{ locationData.avenue }}<br> {{ locationData.city }},
+                                {{ locationData.country }}</p>
+                            <br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                        <i class="icofont-clock-time icofont-rotate-90"></i>
+                        <h4>Время открытия:</h4>
+                        <p>lunes &amp; martes: <br> {{ openHours.weekdays_startTime }}
+                            – {{ openHours.weekdays_endTime }}<br><br>
+                            miércoles: Cerrado<br><br>
+                            jueves &amp; viernes &amp; sábado &amp; domingo: <br>{{ openHours.weekends_startTime }}
+                            – {{ openHours.weekends_endTime }}, {{ openHours.weekdays_startTime }}
+                            – {{ openHours.weekdays_endTime }}</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                        <i class="icofont-envelope"></i>
+                        <h4>Электронная почта:</h4>
+                        {% for emailData in email %}
+                            <p>{{ emailData.email_address }}</p>
+                            <br>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                        <i class="icofont-phone"></i>
+                        <h4>Телефон:</h4>
+                        {% for callData in call %}
+                            <br>
+                            <a href="tel:{{ callData.phone_number }}">{{ callData.phone_number }}</a>
+                            <br>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 info mx-0 d-flex justify-content-end">
+                    <a href="{{ links.whatsappLink }}" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+
+                </div>
+                <div class="col-6 info mx-0 d-flex justify-content-start">
+                    <a href="{{ links.telegramLink }}" class="telegram"><i class="bx bxl-telegram"></i></a>
+
+                </div>
+
             </div>
 
-      </div>
+        </div>
     </section>
 {% endblock contact %}

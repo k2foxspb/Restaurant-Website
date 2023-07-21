@@ -1,56 +1,69 @@
-#sliderImage{
-    background-image: url('../images/ethiopian-cultural-dining.jpg' ) ;
-    background: cover no-repeat !important
-    
+#sliderImage {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 }
-#specialSize img{
+
+#specialSize img {
     height: 200px;
     width: 200px;
-    border:transparent ;
-    border-radius: 60%;
-}
-#menuSize img{
-    height: 50px;
-    width: 50px;
-    border:transparent ;
-    border-radius: 60%;
-}
-#menuSize-lg img{
-    height: 100px;
-    width: 100px;
-    border:transparent ;
+    border: transparent;
     border-radius: 60%;
 }
 
-.topper{
-    margin-top: 4rem!important;
+#menuSize img {
+    height: 50px;
+    width: 50px;
+    border: transparent;
+    border-radius: 60%;
 }
-#chefSize img{
+
+#menuSize-lg img {
+    height: 100px;
+    width: 100px;
+    border: transparent;
+    border-radius: 60%;
+}
+
+.topper {
+    margin-top: 4rem !important;
+}
+
+#chefSize img {
     height: 300px;
     width: 300px;
 }
-#mapStyle{
-    border:0;
-     width: 100%;
-      height: 350px;
+
+#mapStyle {
+    border: 0;
+    width: 100%;
+    height: 350px;
 }
-.reservation{
+
+.reservation {
     margin-top: 40rem
 }
-.pt-2 h2{
+
+.pt-2 h2 {
     color: #ffb03b;
 }
-.clr{
+
+.clr {
     color: white;
 }
-#bg-new{
+
+#bg-new {
     background: rgba(70, 70, 70, 0.8);
 }
-#bcg{
-    background-image: url('../images/ethiopian-cultural-dining.jpg' ) ;
+
+#bcg {
+    background-image: url('../images/ethiopian-cultural-dining.jpg');
     background: cover no-repeat !important
-    
+
 }
+
 #bcg::before {
     content: '';
     background-color: rgba(12, 11, 10, 0.5);
@@ -60,26 +73,32 @@
     left: 0;
     bottom: 0;
 }
-.form-check-input{
-    color: black!important;
+
+.form-check-input {
+    color: black !important;
 }
-.form-check-label{
+
+.form-check-label {
     margin-left: 3rem;
 }
-.lh-2{
+
+.lh-2 {
     line-height: 2;
 }
 
-.m-2{
+.m-2 {
     margin: 2rem;
 }
-.order-title{
+
+.order-title {
     display: inline-block;
 }
-.br-1{
+
+.br-1 {
     border-radius: 1rem;
     border: none;
 }
-.h-6{
+
+.h-6 {
     height: 7rem;
 }
