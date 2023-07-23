@@ -92,7 +92,7 @@ class Email(models.Model):
 
 
 class Call(models.Model):
-    phone_number = models.TextField(max_length=100, verbose_name="Phone number")
+    phone_number = models.TextField(max_length=100, verbose_name="Номер телефона")
 
     def __str__(self):
         return self.phone_number
@@ -110,9 +110,10 @@ class StarterMenu(models.Model):
 
 class MainMenu(models.Model):
     mainOption = models.CharField(max_length=100, default="Main", editable=False)
-    mainContent = models.CharField(max_length=100, verbose_name="Food name")
-    mainDesc = models.TextField(verbose_name="Food content")
-    mainPrice = models.CharField(max_length=100, verbose_name="Price")
+    mainContent = models.CharField(max_length=100, verbose_name="Название блюда")
+    mainDesc = models.TextField(verbose_name="Описание")
+    mainPrice = models.CharField(max_length=100, verbose_name="Цена")
+    image = models.ImageField(upload_to=image_path, null=True, blank=True)
 
     def __str__(self):
         return self.mainContent
@@ -133,6 +134,7 @@ class DrinksMenu(models.Model):
     drinksContent = models.CharField(max_length=100, verbose_name="Drink name")
     drinksDesc = models.TextField(verbose_name="Drink content")
     drinksPrice = models.CharField(max_length=100, verbose_name="Price")
+    image = models.ImageField(upload_to=image_path, null=True, blank=True)
 
     def __str__(self):
         return self.drinksContent

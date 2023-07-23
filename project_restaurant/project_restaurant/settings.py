@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     'djreservation',
     'crispy_forms',
     'restaurant.apps.RestaurantConfig',
-    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

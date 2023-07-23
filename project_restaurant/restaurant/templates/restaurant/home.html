@@ -134,32 +134,29 @@
             <div class="row">
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="menu-flters">
-                        <li data-filter="*" class="filter-active">Показать все</li>
-                        <li data-filter=".filter-starters">закуска</li>
                         <li data-filter=".filter-main">Основные блюда</li>
-                        <li data-filter=".filter-desserts">Десерты</li>
                         <li data-filter=".filter-drinks">Напитки</li>
                     </ul>
                 </div>
             </div>
 
             <div class="row menu-container">
-                {% for starter in starterMenu %}
-                    <div class="col-lg-6 menu-item filter-starters">
-                        <div class="col-md-2 text-center" id="menuSize">
-                            <img src="{% static "restaurant/images/starters/" %}{{ starter.id }}.jpg" alt=""
-                                 class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="menu-content">
-                                <a href="#">{{ starter.starterContent }}</a><span>{{ starter.starterPrice }}</span>
-                            </div>
-                            <div class="menu-ingredients">
-                                {{ starter.starterDesc }}
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+{#                {% for starter in starterMenu %}#}
+{#                    <div class="col-lg-6 menu-item filter-starters">#}
+{#                        <div class="col-md-2 text-center" id="menuSize">#}
+{#                            <img src="{% static "restaurant/images/starters/" %}{{ starter.id }}.jpg" alt=""#}
+{#                                 class="img-fluid">#}
+{#                        </div>#}
+{#                        <div class="col-md-8">#}
+{#                            <div class="menu-content">#}
+{#                                <a href="#">{{ starter.starterContent }}</a><span>{{ starter.starterPrice }}</span>#}
+{#                            </div>#}
+{#                            <div class="menu-ingredients">#}
+{#                                {{ starter.starterDesc }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
 
 
 
@@ -167,12 +164,12 @@
                     <div class="col-lg-6 menu-item filter-main">
                         `
                         <div class="col-md-2 text-center" id="menuSize">
-                            <img src="{% static "restaurant/images/mains/" %}{{ main.id }}.jpg" alt=""
+                            <img src="{{ main.image.url }}" alt=""
                                  class="img-fluid">
                         </div>
                         <div class="col-md-8">
                             <div class="menu-content">
-                                <a href="#">{{ main.mainContent }}</a><span>{{ main.mainPrice }}</span>
+                                <div href="#">{{ main.mainContent }}</div><span>{{ main.mainPrice }}</span>
                             </div>
                             <div class="menu-ingredients">
                                 {{ main.mainDesc }}
@@ -201,7 +198,7 @@
                 {% for drinks in drinksMenu %}
                     <div class="col-lg-6 menu-item filter-drinks">
                         <div class="col-md-2 text-center" id="menuSize">
-                            <img src="{% static "restaurant/images/drinks/" %}{{ drinks.id }}.jpg" alt=""
+                            <img src="{{ drinks.image.url }}" alt="{{ drinks.id }}"
                                  class="img-fluid">
                         </div>
                         <div class="col-md-8">
@@ -227,10 +224,10 @@
     <section id="specials" class="specials">
         <div class="container">
 
-{#            <div class="section-title">#}
-{#                <h2>Consulte nuestras ofertas <span>especiales</span></h2>#}
-{##}
-{#            </div>#}
+            {#            <div class="section-title">#}
+            {#                <h2>Consulte nuestras ofertas <span>especiales</span></h2>#}
+            {##}
+            {#            </div>#}
 
             <div class="row">
                 <div class="col-lg-3">
@@ -349,80 +346,80 @@
     <section id="book-a-table" class="book-a-table">
         <div class="container">
 
-{#            <div class="section-title">#}
-{#                <h2><span>Reservar </span> una mesa</h2>#}
-{##}
-{#            </div>#}
+            {#            <div class="section-title">#}
+            {#                <h2><span>Reservar </span> una mesa</h2>#}
+            {##}
+            {#            </div>#}
 
-{#            <form action="{% url 'reservation' %}" method="POST" class="php-email-form" id="myForm">#}
-{#                {% csrf_token %}#}
-{#                <div class="form-row">#}
-{#                    <div class="col-lg-4 col-md-6 form-group">#}
-{#                        <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombrex"#}
-{#                               data-rule="minlen:4" data-msg="Please enter your full name" required>#}
-{#                        <div class="validate"></div>#}
-{#                    </div>#}
-{#                    <div class="col-lg-4 col-md-6 form-group">#}
-{#                        <input type="email" class="form-control" name="email" id="email"#}
-{#                               placeholder="Tu correo electrónico" data-rule="email"#}
-{#                               data-msg="Please enter a valid email" required>#}
-{#                        <div class="validate"></div>#}
-{#                    </div>#}
-{#                    <div class="col-lg-4 col-md-6 form-group">#}
-{#                        <input type="text" class="form-control" name="phone" id="phone"#}
-{#                               placeholder="Tu número de teléfono" data-rule="minlen:4"#}
-{#                               data-msg="Please enter your phone number" required>#}
-{#                        <div class="validate"></div>#}
-{#                    </div>#}
-{#                    <div class="col-lg-4 col-md-6 form-group">#}
-{##}
-{#                        <input type="datetime-local" name="date" class="form-control" id="date" placeholder="Fecha"#}
-{#                               data-rule="minlen:4" data-msg="Please enter the date" required>#}
-{##}
-{##}
-{#                    </div>#}
-{#                    <div class="validate"></div>#}
-{##}
-{##}
-{#                    <div class="col-lg-4 col-md-6 form-group">#}
-{#                        <input type="number" min="1" class="form-control" name="people" id="people"#}
-{#                               placeholder="Número de personas" data-rule="minlen:1"#}
-{#                               data-msg="Please enter the number of people" required>#}
-{#                        <div class="validate"></div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <textarea class="form-control" name="message" rows="5" placeholder="Mensaje"></textarea>#}
-{#                    <div class="validate"></div>#}
-{#                </div>#}
-{##}
-{#                <div class="text-center">#}
-{#                    <button type="submit" id="submit" data-toggle="modal" data-target="#myModal">Reservar una mesa#}
-{#                    </button>#}
-{#                </div>#}
-{#                <div class="modal fade" id="myModal" role="dialog">#}
-{#                    <div class="modal-dialog">#}
-{##}
-{#                        <!-- Modal content-->#}
-{#                        <div class="modal-content">#}
-{#                            <div class="modal-header">#}
-{#                                <button type="button" class="close" data-dismiss="modal">&times;</button>#}
-{#                                <h2 class="modal-title">Reservation Sent Successfully!</h2>#}
-{#                            </div>#}
-{#                            <div class="modal-body">#}
-{#                                <p>Confirmaremos su reserva en breve por correo electrónico o una llamada#}
-{#                                    telefónica!</p>#}
-{#                            </div>#}
-{#                            <div class="modal-footer">#}
-{#                                <button type="button" class="btn btn-default"#}
-{#                                        onclick="javascript:window.location.reload()" data-dismiss="modal">Close#}
-{#                                </button>#}
-{#                            </div>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{#                </div>#}
-{#            </form>#}
+            {#            <form action="{% url 'reservation' %}" method="POST" class="php-email-form" id="myForm">#}
+            {#                {% csrf_token %}#}
+            {#                <div class="form-row">#}
+            {#                    <div class="col-lg-4 col-md-6 form-group">#}
+            {#                        <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombrex"#}
+            {#                               data-rule="minlen:4" data-msg="Please enter your full name" required>#}
+            {#                        <div class="validate"></div>#}
+            {#                    </div>#}
+            {#                    <div class="col-lg-4 col-md-6 form-group">#}
+            {#                        <input type="email" class="form-control" name="email" id="email"#}
+            {#                               placeholder="Tu correo electrónico" data-rule="email"#}
+            {#                               data-msg="Please enter a valid email" required>#}
+            {#                        <div class="validate"></div>#}
+            {#                    </div>#}
+            {#                    <div class="col-lg-4 col-md-6 form-group">#}
+            {#                        <input type="text" class="form-control" name="phone" id="phone"#}
+            {#                               placeholder="Tu número de teléfono" data-rule="minlen:4"#}
+            {#                               data-msg="Please enter your phone number" required>#}
+            {#                        <div class="validate"></div>#}
+            {#                    </div>#}
+            {#                    <div class="col-lg-4 col-md-6 form-group">#}
+            {##}
+            {#                        <input type="datetime-local" name="date" class="form-control" id="date" placeholder="Fecha"#}
+            {#                               data-rule="minlen:4" data-msg="Please enter the date" required>#}
+            {##}
+            {##}
+            {#                    </div>#}
+            {#                    <div class="validate"></div>#}
+            {##}
+            {##}
+            {#                    <div class="col-lg-4 col-md-6 form-group">#}
+            {#                        <input type="number" min="1" class="form-control" name="people" id="people"#}
+            {#                               placeholder="Número de personas" data-rule="minlen:1"#}
+            {#                               data-msg="Please enter the number of people" required>#}
+            {#                        <div class="validate"></div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="form-group">#}
+            {#                    <textarea class="form-control" name="message" rows="5" placeholder="Mensaje"></textarea>#}
+            {#                    <div class="validate"></div>#}
+            {#                </div>#}
+            {##}
+            {#                <div class="text-center">#}
+            {#                    <button type="submit" id="submit" data-toggle="modal" data-target="#myModal">Reservar una mesa#}
+            {#                    </button>#}
+            {#                </div>#}
+            {#                <div class="modal fade" id="myModal" role="dialog">#}
+            {#                    <div class="modal-dialog">#}
+            {##}
+            {#                        <!-- Modal content-->#}
+            {#                        <div class="modal-content">#}
+            {#                            <div class="modal-header">#}
+            {#                                <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+            {#                                <h2 class="modal-title">Reservation Sent Successfully!</h2>#}
+            {#                            </div>#}
+            {#                            <div class="modal-body">#}
+            {#                                <p>Confirmaremos su reserva en breve por correo electrónico o una llamada#}
+            {#                                    telefónica!</p>#}
+            {#                            </div>#}
+            {#                            <div class="modal-footer">#}
+            {#                                <button type="button" class="btn btn-default"#}
+            {#                                        onclick="javascript:window.location.reload()" data-dismiss="modal">Close#}
+            {#                                </button>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {##}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </form>#}
 
         </div>
     </section>
@@ -497,7 +494,7 @@
                 {% for chef in chefs %}
                     <div class="col-lg-4">
                         <div class="member">
-                            <div class="pic" id="chefSize">
+                            <div class="" id="chefSize">
                                 <img src="{{ chef.image.url }}" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
@@ -577,13 +574,13 @@
 
                     <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
                         <i class="icofont-clock-time icofont-rotate-90"></i>
-                        <h4>Время открытия:</h4>
-                        <p>lunes &amp; martes: <br> {{ openHours.weekdays_startTime }}
+                        <h4>Время работы:</h4>
+                        <p>Будни: <br> {{ openHours.weekdays_startTime }}
                             – {{ openHours.weekdays_endTime }}<br><br>
-                            miércoles: Cerrado<br><br>
-                            jueves &amp; viernes &amp; sábado &amp; domingo: <br>{{ openHours.weekends_startTime }}
-                            – {{ openHours.weekends_endTime }}, {{ openHours.weekdays_startTime }}
-                            – {{ openHours.weekdays_endTime }}</p>
+                            <br><br>
+                            Выходные: <br>{{ openHours.weekends_startTime }}
+                            – {{ openHours.weekends_endTime }},
+                            </p>
                     </div>
 
                     <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
