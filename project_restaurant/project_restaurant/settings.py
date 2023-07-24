@@ -79,7 +79,7 @@ else:
             'USER': 'fox',
             'PASSWORD': passw,
             'HOST': 'localhost',
-            'PORT': '',
+            'PORT': '5432',
         }
     }
 # Password validation
