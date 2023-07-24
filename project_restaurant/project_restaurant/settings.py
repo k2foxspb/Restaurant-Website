@@ -19,8 +19,8 @@ ALLOWED_HOSTS = host
 # Application definition
 
 INSTALLED_APPS = [
-    # 'paypal.standard.ipn',
-    # 'djreservation',
+    'paypal.standard.ipn',
+    'djreservation',
     'crispy_forms',
     'restaurant.apps.RestaurantConfig',
     'django.contrib.admin',
