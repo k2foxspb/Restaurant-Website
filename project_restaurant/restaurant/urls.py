@@ -9,7 +9,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
                   path('', views.home, name='restaurant-home'),
-                  path('reservation', views.reservation, name='reservation'),
                   path('paypal-return/', views.PaypalReturnView.as_view(), name='paypal-return'),
                   path('paypal-cancel/', views.PaypalCancelView.as_view(), name='paypal-cancel'),
                   path('paypal/', include('paypal.standard.ipn.urls')),

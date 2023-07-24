@@ -250,39 +250,3 @@ def verify(request):
 def site(request):
     return HttpResponse(open('restaurant/sitemap.xml').read(), content_type='text/xml')
 
-
-def reservation(request):
-    if request.method == "POST":
-        your_name = request.POST['name']
-        your_phone = request.POST['phone']
-        your_email = request.POST['email']
-        date = request.POST['date']
-
-        number_of_people = request.POST['people']
-        message = request.POST['message']
-
-        reservation = "Name:" + your_name + " \n Phone:" + your_phone + "\n Email:" + your_email + "\n Date:" + date + " \n Number of People:" + number_of_people + "\n Message:" + message
-        send_mail(
-            'Table Reservation Request',
-            reservation,
-            your_email,
-            ['el.delicious.d.etiopia@gmail.com'],
-        )
-
-        return render(request, 'restaurant/reservation.html', {
-            'your_name': your_name,
-            'your_phone': your_phone,
-            'your_email': your_email,
-            'date': date,
-
-            'number_of_people': number_of_people,
-            'message': message})
-    else:
-        return render(request, 'restaurant/home.html', {
-            'your_name': your_name,
-            'your_phone': your_phone,
-            'your_email': your_email,
-            'date': date,
-
-            'number_of_people': number_of_people,
-            'message': message})
