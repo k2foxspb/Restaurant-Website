@@ -1,1 +1,0 @@
-web: gunicorn --pythonpath project_restaurant project_restaurant.wsgi
