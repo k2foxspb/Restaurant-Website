@@ -75,7 +75,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'Restaurant_Website',
+            'NAME': 'restaurant',
             'USER': 'fox',
             'PASSWORD': passw,
             'HOST': 'localhost',
